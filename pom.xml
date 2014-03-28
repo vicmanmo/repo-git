@@ -166,9 +166,9 @@
 </reporting>
 
  <scm>
-	<connection>scm:git:vicmanmo@cfp.upv.es:vicmanmo/repo-git.git</connection>
-	<url>scm:git:vicmanmo@cfp.upv.es:vicmanmo/repo-git.git</url>
-	<developerConnection>scm:git:vicmanmo@cfp.upv.es:vicmanmo/repo-git.git</developerConnection>
+	<connection>scm:git:git@github.com:vicmanmo/repo-git.git</connection>
+	<url>scm:git:git@github.com:vicmanmo/repo-git.git</url>
+	<developerConnection>scm:git:git@github.com:vicmanmo/repo-git.git</developerConnection>
   </scm>	
   
 </project>
