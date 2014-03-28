@@ -3,7 +3,7 @@
   <parent>
 	<groupId>org.upv.ufasu</groupId>
 	<artifactId>weather-multimodule</artifactId>
-	<version>1.0.0</version>	
+	<version>1.0.1-SNAPSHOT</version>	
   </parent>
   <artifactId>weather-webapp</artifactId>
   <packaging>war</packaging>
@@ -20,7 +20,7 @@
     <dependency>
       <groupId>org.upv.ufasu</groupId>
       <artifactId>yahoo-weather</artifactId>
-      <version>1.0.0</version>      
+      <version>1.0.1-SNAPSHOT</version>      
     </dependency>	
     
   </dependencies>
