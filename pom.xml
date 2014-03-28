@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.upv.ufasu</groupId>
+  <artifactId>weather-multimodule</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>weather-multimodule</name>
+  <url>http://maven.apache.org</url>
+  <description>Weather</description>
+  <inceptionYear>2014</inceptionYear>
+
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <modules>
+	<module>yahoo-weather</module>
+	<module>weather-webapp</module>
+  </modules>
+  <licenses>
+	<license>
+		<name>The Apache Software License, Version 2.0</name>
+		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		<distribution>repo</distribution>
+		<comments>A business-friendly OSS license</comments>
+	</license>
+  </licenses>	
+
+  <developers>
+	<developer>
+		<id>vicmanmo</id>
+		<name>Victor</name>
+		<email>vicmanmo@gmail.com</email>		
+		<organization>UPV</organization>
+		<organizationUrl>http://www.upv.es</organizationUrl>
+		<roles>
+			<role>architect</role>
+			<role>developer</role>
+		</roles>
+		<timezone>+1</timezone>
+	</developer>
+  </developers>	
+  <dependencies>
+	<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>3.8.1</version>
+	      <scope>test</scope>
+    	</dependency>	 
+  </dependencies>
+  <build>
+    <pluginManagement> 	    
+	    <plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<url>http://localhost:8080/manager</url>
+				</configuration>
+			</plugin>
+			<plugin>
+	        	<groupId>org.apache.maven.plugins</groupId>
+	        	<artifactId>maven-source-plugin</artifactId>        	
+	        	<version>2.2.1</version>
+	      	</plugin>
+	      	<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-javadoc-plugin</artifactId>
+		        <version>2.9.1</version>
+		        <configuration>          
+		          <aggregate>true</aggregate>          
+		        </configuration>
+	      	</plugin>
+	    </plugins>
+	    
+    </pluginManagement>	
+    <plugins>
+	<plugin>
+		<artifactId>maven-antrun-plugin</artifactId>
+		<inherited>false</inherited>
+		<executions>
+			<execution>
+				<id>echovalide</id>
+				<phase>validate</phase>
+				<goals>
+					<goal>run</goal>
+				</goals>
+				<configuration>
+					<tasks>
+						<echo>ARTIFACTID=${project.artifactId}</echo>
+						<echo>GRUPO=${project.groupId}</echo>
+						<echo>VERSION=${project.version}</echo>
+						<echo>MODULO=${project.modules}</echo>
+					</tasks>
+				</configuration>
+			</execution>			
+		</executions>
+	</plugin>
+	<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>        	
+        <executions>
+				<execution>
+					<id>attach-sources</id>
+					<goals>
+						<goal>aggregate</goal>
+					</goals>					
+			</execution>
+		</executions>
+     </plugin>     
+   </plugins>	
+   	
+ </build>
+ <profiles>
+	<profile>
+		<id>script</id>
+		<build>    
+    			<plugins>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<inherited>false</inherited>
+					<executions>
+						<execution>
+							<id>script</id>
+				    			<phase>compile</phase>
+				    			<configuration>
+				      				<tasks>
+									<exec executable="${basedir}/script/hello.sh"></exec>
+				      				</tasks>
+				    			</configuration>
+				    			<goals>
+				      				<goal>run</goal>
+				    			</goals>
+				  		</execution>
+					</executions>
+				</plugin>
+   			</plugins>	
+   	
+ 		</build>
+	
+	</profile>
+ </profiles> 
+
+<reporting>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-report-plugin</artifactId>
+			<version>2.17</version>
+		</plugin>
+		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-javadoc-plugin</artifactId>        
+      	</plugin>
+	</plugins>
+</reporting>	
+  
+</project>
